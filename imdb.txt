@@ -1,0 +1,27 @@
+create table actors(
+actor_id serial PRIMARY KEY, 
+actor_name text,
+birth_date Date
+);
+
+create table movies(
+movie_id serial PRIMARY KEY, 
+name text,
+published Date,
+director text
+);
+
+create table users(
+user_id serial PRIMARY KEY, 
+username text,
+password text,
+email text,
+creation_date Date,
+is_locked boolean default false,
+times_before_locked integer
+);
+
+
+grant all on users to koud;
+grant all on users to movies;
+grant all on users_user_id_seq to koud;

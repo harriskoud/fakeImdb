@@ -1,0 +1,18 @@
+	<div class="mdl-card mdl-card-order mdl-shadow--8dp">
+		<div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">{{movie.name}}</h2>
+		</div>	
+		<div class="mdl-card__supporting-text mdl-grid">
+        <h4 id="published" class="mdl-card__title-text">Published -->{{movie.published}}</h4>
+    </div>
+    <div class="mdl-card__supporting-text mdl-grid">
+        <h4 class="mdl-card__title-text">Director -->{{movie.director}}</h4>
+    </div>
+    <div class="mdl-card__supporting-text mdl-grid">
+        <h4 class="mdl-card__title-text">Likes -->{{movie.likes}}</h4>
+    </div>
+    <div>
+      <button (click)="like('true')">Like</button>
+      <button (click)="like('false')">Dislike</button>
+    </div>
+	</div>

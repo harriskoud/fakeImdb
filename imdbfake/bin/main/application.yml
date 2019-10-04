@@ -1,0 +1,31 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+      database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+      naming.implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+      naming.physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      connection.provider_class: org.hibernate.hikaricp.internal.HikariCPConnectionProvider
+    properties:
+      hibernate.temp.use_jdbc_metadata_defaults: false
+      hibernate.jdbc.lob.non_contextual_creation: false
+      hibernate.id.new_generator_mappings: true
+      hibernate.generate_statistics: false
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/imdb
+    username: koud
+    password: 12345
+    platform: POSTGRESQL
+    driverClassName: org.postgresql.Driver
+  security:
+    user:
+     name: admin
+     password: admin
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8901/user
+server:
+  port: 8090
+signing.key: koudKey

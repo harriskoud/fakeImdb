@@ -1,0 +1,12 @@
+server:
+  port: 8901
+spring:
+ datasource:
+    url: jdbc:postgresql://localhost:5432/users
+    username: koud
+    password: 12345
+    platform: POSTGRESQL
+    driverClassName: org.postgresql.Driver
+logging:
+  path: authLogs
+signing.key: "12345"
