@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.koud.imdbfake.model.Authority;
 import com.koud.imdbfake.model.User;
-import com.koud.imdbfake.repository.UserRepository;
+import com.koud.imdbfake.service.AuthorityService;
+import com.koud.imdbfake.service.UserService;
 
 @RestController
 @RequestMapping(value = "user", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -28,18 +28,18 @@ public class UserResource {
 	private static Logger LOG = LoggerFactory.getLogger(UserResource.class);
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserService userService;
 	@Autowired
-	private AuthorityRepository authorityRepository;
+	private AuthorityService authorityService;
 
 	@GetMapping
 	public @ResponseBody List<User> getUsers() {
-		return userRepository.findAll();
+		return userService.findAllUsers();
 	}
 
 	@GetMapping("/id")
 	public @ResponseBody ResponseEntity<?> getUserById(@PathVariable int id) {
-		Optional<User> user = userRepository.findById(id);
+		Optional<User> user = userService.findUserById(id);
 		if (user.isPresent()) {
 			return ResponseEntity.ok(user.get());
 		} else {
@@ -51,13 +51,11 @@ public class UserResource {
 	public @ResponseBody ResponseEntity<?> registerUser(@RequestBody User user) {
 
 		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-		User registeredUser = userRepository.save(user);
+		User registeredUser = userService.registerUser(user);
 		
 		LOG.info("Registration of: " + registeredUser);
 		
-		Authority authority = Authority.builder().authRole("USER").userId(registeredUser.getUserId())
-				.userName(registeredUser.getUsername()).build();
-		authorityRepository.save(authority);
+		authorityService.createNewAuthority(registeredUser);
 
 		return ResponseEntity.ok(registeredUser);
 	}
