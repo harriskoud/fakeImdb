@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.ninePixels.poetry.authserver.userDetails.UserService;
 
@@ -24,6 +25,9 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private UserService userDetailsService;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	@Bean
@@ -64,7 +68,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 	    DaoAuthenticationProvider authProvider
 	      = new DaoAuthenticationProvider();
 	    authProvider.setUserDetailsService(userDetailsService);
-	    //authProvider.setPasswordEncoder(encoder());
+	    authProvider.setPasswordEncoder(passwordEncoder);
 	    return authProvider;
 	}
 }

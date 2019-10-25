@@ -27,10 +27,10 @@ import lombok.NonNull;
 @Table(name = "users")
 public class User implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final int serialVersionUID = 1;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userId;
+	private int userId;
 	@NonNull
 	private String firstname;
 	@NonNull

@@ -2,17 +2,18 @@
 		<div class="mdl-card__title">
       <h2 class="mdl-card__title-text">{{movie.name}}</h2>
 		</div>	
-		<div class="mdl-card__supporting-text mdl-grid">
-        <h4 id="published" class="mdl-card__title-text">Published -->{{movie.published}}</h4>
+		<div class="mdl-card__actions mdl-card--border">
+        <div id="published" class="mdl-card__title-text">Published -->{{movie.published | date: 'dd/MM/yyyy'}}</div>
     </div>
-    <div class="mdl-card__supporting-text mdl-grid">
-        <h4 class="mdl-card__title-text">Director -->{{movie.director}}</h4>
+    <div class="mdl-card__actions mdl-card--border">
+        <div class="mdl-card__title-text">Director -->{{movie.director}}</div>
     </div>
-    <div class="mdl-card__supporting-text mdl-grid">
-        <h4 class="mdl-card__title-text">Likes -->{{movie.likes}}</h4>
+    <div class="mdl-card__actions mdl-card--border">
+        <div class="mdl-card__title-text">Likes -->{{movie.likes}}</div>
     </div>
-    <div>
-      <button (click)="like('true')">Like</button>
-      <button (click)="like('false')">Dislike</button>
+    <div class="mdl-card__actions mdl-card--border">
+      <button class="mdl-button mdl-js-button mdl-button--raised"  (click)="like('true')" [disabled]="favour.userFavour.favour == 1">Like</button>
+      <button class="mdl-button mdl-js-button mdl-button--raised"  (click)="like('false')" [disabled]="favour.userFavour.favour == 0">Unlike</button>
     </div>
 	</div>
+

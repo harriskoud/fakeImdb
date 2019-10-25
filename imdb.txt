@@ -21,7 +21,15 @@ is_locked boolean default false,
 times_before_locked integer
 );
 
+create table users_liked_movies(
+user_id integer REFERENCES users(user_id),
+movie_id integer REFERENCES movies(movie_id),
+favour integer default 2,
+PRIMARY KEY(user_id, movie_id)
+)
 
+
+grant all on users_liked_movies to koud
 grant all on users to koud;
 grant all on users to movies;
 grant all on users_user_id_seq to koud;

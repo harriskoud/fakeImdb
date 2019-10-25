@@ -22,11 +22,11 @@ import lombok.NoArgsConstructor;
 public class Authority implements Serializable {
 	
 	
-	private static final long serialVersionUID = 1L;
+	private static final int serialVersionUID = 1;
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long authId;
-	private Long userId;
+	private int authId;
+	private int userId;
 	private String authRole;
 	private String userName;
 }

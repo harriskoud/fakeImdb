@@ -22,7 +22,7 @@ import com.koud.imdbfake.service.AuthorityService;
 import com.koud.imdbfake.service.UserService;
 
 @RestController
-@RequestMapping(value = "user", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/user", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UserResource {
 
 	private static Logger LOG = LoggerFactory.getLogger(UserResource.class);
@@ -37,7 +37,7 @@ public class UserResource {
 		return userService.findAllUsers();
 	}
 
-	@GetMapping("/id")
+	@GetMapping("/{id}")
 	public @ResponseBody ResponseEntity<?> getUserById(@PathVariable int id) {
 		Optional<User> user = userService.findUserById(id);
 		if (user.isPresent()) {
@@ -50,7 +50,6 @@ public class UserResource {
 	@PostMapping
 	public @ResponseBody ResponseEntity<?> registerUser(@RequestBody User user) {
 
-		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
 		User registeredUser = userService.registerUser(user);
 		
 		LOG.info("Registration of: " + registeredUser);

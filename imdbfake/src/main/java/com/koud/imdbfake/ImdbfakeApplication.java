@@ -40,7 +40,7 @@ public class ImdbfakeApplication {
 		user.setUsername("harris");
 		user.setPassword("12345");
 		user.setLocked(true);
-		user.setUserId(1L);
+		user.setUserId(1);
 		userRepository.save(user);
 		return user;
 	}

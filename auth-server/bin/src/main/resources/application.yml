@@ -2,11 +2,16 @@ server:
   port: 8901
 spring:
  datasource:
-    url: jdbc:postgresql://localhost:5432/users
+    url: jdbc:postgresql://localhost:5432/imdb
     username: koud
     password: 12345
     platform: POSTGRESQL
     driverClassName: org.postgresql.Driver
+# cloud:
+#    config:
+#      enabled: false
+#      uri: http://localhost:8888
+#      fail-fast: false
 logging:
   path: authLogs
-signing.key: "12345"
+signing.key: koudKey

@@ -30,9 +30,7 @@ public class OAuth2AuthorizationServerConfig extends ResourceServerConfigurerAda
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        System.out.println("----------------------------------------------------------------------------------------------------------------");
         System.out.println(signingKeyConfig.getJwtSigningKey());
-        System.out.println("----------------------------------------------------------------------------------------------------------------");
         converter.setSigningKey(signingKeyConfig.getJwtSigningKey());
         return converter;
     }

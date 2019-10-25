@@ -1,12 +1,15 @@
 spring:
   application:
     name: auth-server
-  profiles:
-    active: dev
-    #active: qa
-    #active: prod
-  cloud:
-    config:
-      enabled: true
-      uri: http://localhost:8888
-      fail-fast: true
+#  profiles:
+#    active: prod
+#  cloud:
+#    config:
+#      enabled: false
+#      uri: http://localhost:8888
+#      fail-fast: false
+logging:
+  level:
+    org:
+      springframework:
+        web: debug

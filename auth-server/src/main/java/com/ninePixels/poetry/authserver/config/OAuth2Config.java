@@ -46,7 +46,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
 		// clients.jdbc(dataSource)
 		clients.inMemory().withClient("user-microservice").secret(passwordEncoder.encode("thisissecret"))
-				.accessTokenValiditySeconds(5184000)
+				.accessTokenValiditySeconds(3600)
 				.authorizedGrantTypes("refresh_token", "password", "client_credentials")
 				.scopes("webclient", "mobileclient");
 	}
